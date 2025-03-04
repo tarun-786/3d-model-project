@@ -9,7 +9,7 @@ const ModelUploadForm = () => {
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -35,7 +35,7 @@ const ModelUploadForm = () => {
       setUploading(true);
       setError(null);
 
-      const response = await axios.post('http://localhost:5000/upload', {
+      const response = await axios.post(`${backendUrl}/upload`, {
           name: modelName,
           description: description,
           url: modelUrl,
